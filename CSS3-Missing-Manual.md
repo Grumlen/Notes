@@ -27,6 +27,10 @@ Attribute selectors are contained in [], such as tag[attr], and target only elem
 |$=|Value must end with entry|
 |*=|Value must contain entry|
 
+Child selectors include :first-child, :last-child, and :nth-child(). The () should contain odd, even, or a math expression using "n". Others include :first-of-type, :last-of-type, and :nth-of-type().
+
+Sibling selectors allow you to select elements that are children of the same parent element.
+
 ##Chapter 4
 
 ##Chapter 5
