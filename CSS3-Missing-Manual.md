@@ -2,9 +2,30 @@
 
 ##Chapter 1
 
+Use HTML primarily for structure in a page (a.k.a. markup) rather than for formatting content since CSS is more efficient for that purpose. Use the &lt;div&gt; (block) &amp; &lt;span&gt; (in-line) elements, along with the class attribute, to be the primary means for marking content for formatting in CSS. There are also the section, aside, footer, nav, figure, and article tags which act as div tags but have specific purposes.
+
 ##Chapter 2
 
+CSS consists of 5 main parts: Selector, Declaration Block, Declaration, Property, and Value.
+
+Selectors are used to identify which part of the html you are formatting. Declaration Block if a section bracketed by {} that contains the Declatations. Declarations are the instructions for how to format the content and consist of properties and values. A property is the formatting option that you are targetting, while a value indicates how the property should display.
+
+Style sheets can be internal or external. If the formatting you are using will NEVER be used on another page, then use the internal CSS. Otherwise, use external. To use internal CSS, just place the CSS code in a &lt;style&gt; element in the head.
+
 ##Chapter 3
+
+ID selectors should be used rarely, with class selectors usually being preferred. In general you should try to use the selector that best fits the situation.
+
+Psuedo-Selectors include :hover, :visited, :link, :active, :first-letter, :first-line, :focus, :before, :after, and ::selection.
+
+Attribute selectors are contained in [], such as tag[attr], and target only elements with the tag AND the attribute indicated. When combined with a value, you can get even more specific.
+
+|Conditional|Effect|
+|:-:|---|
+|=|Must have the exact value|
+|^=|Value must start with entry|
+|$=|Value must end with entry|
+|*=|Value must contain entry|
 
 ##Chapter 4
 
