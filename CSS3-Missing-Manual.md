@@ -103,6 +103,30 @@ Requires vendor tags.
 
 ##Chapter 11
 
+Use tables for actual tables of data, not to arrange content in HTML. Use the &lt;colgroup&gt; and &lt;col&gt; tags at the beginning of a table so you can markup the columns as well as the rows of a table. Each cell in a table will have its own margin, padding, and border. Use border-collapse: collapse to eliminate margins and double borders from cells, but this will disable empty-cells and border-radius properties.
+
+Use a label CLASS (not the tag) to denote the questions for each form area so that you can more easily organize the layout of the form. This is especially true for radio and checkbox, since the label will actually the text associated with each individual response. Then apply the display: inline-block and width: properties to align the form in a way that is pleasing to the eye.
+
 ##Chapter 12
 
+The 3 main types of layouts are Fixed, Liquid, and Responsive. Fixed uses pixel lengths for elements so that a web page always displays the same way no matter how big or small a screen is. Liquid uses percentages so that content is resized to fit the size of the screen. Responsive is designed to detect the browser settings and automatically adjust the layout to a preset tailored for the screen size.
+
+The major key is to use the HTML to organize content with semantic tags, then use CSS to arrange it using such properties as float. Sketch the layout of your page on paper first then see about how to realize that layout using boxes. After you have everything positioned the way you want, then start adding borders, images, and colors.
+
 ##Chapter 13
+
+Float is very useful for positioning a box to the left or right edge of its parent box, but always be sure to specify a width for floated boxes. By using multiple levels of floated boxes you can create more complex multi-column layouts. Use the clear property to ensure that no other siblings are on the corresponding side of the box.
+
+Background images can be used in a wrapper box to "fake" column backgrounds that extend below the content of the column; just use gradients.
+
+Be careful about box sizing to prevent float drop, which is when a float seems to inexplicably drop below content that it should be next to.
+
+#Chapter 14
+
+Responsive Web Design (RWD) is a series of html and css techniques that allow a site to automatically adjust its layout depending on the device being used to access it. To prevent phone zooming with RWD use &lt;meta name="viewport" content"width=device-width"&gt; in html OR @viewport {width=device-width;} in css.
+
+Good changes to make based on device are: # of columns, flexible widths, white space, font sizes, navigation menus, and background images. It can also help to cut some content from a page when being viewed on a small device.
+
+To make a media query in html, you use the media attribute inside a link element. The format is: media="(dimension:Xpx)" where X is a number and dimension can be min-width, width, or max-width. Use "and" to connect multiple media queries to create a width range. You can import an external CSS file using @import url(URL) (dimension:Xpx); or by using @media (dimension:Xpx) {} with all of the styling done in the declaration block.
+
+The width: and max-width: properties can be used to easily create automatically sizing boxes, but be sure to set box-sizing to border-box first.
