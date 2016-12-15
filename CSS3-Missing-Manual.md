@@ -33,9 +33,19 @@ Sibling selectors allow you to select elements that are children of the same par
 
 ##Chapter 4
 
+Inheritance allows many properties of an element to be passed down to all of its descendants, but generally not those that affect layout and positioning.
+
 ##Chapter 5
 
+When inheritance conflicts, the closest ancestor wins. A directly applied style always beats inheritance. For directly applied styles, order of precedence is: Inline > ID > Class > tag, i.e. a class selector supersedes a tag selector. In a tie the last applied style wins. You can add !important to the end of a declaration to give it the highest priority.
+
+In general try to keep selectors short and avoid having all of your selectors compete.
+
 ##Chapter 6
+
+If you choose to use a non-standard font, be sure that you have legal permission to use it on your website first. Also use the @font-face 4 times to set up the regular, italic, bold, and bold italic versions of the font.
+
+Colors can be specified in hexadecimal, RGB, RGBA, HSL, HSLA, and named formats.
 
 ##Chapter 7
 
