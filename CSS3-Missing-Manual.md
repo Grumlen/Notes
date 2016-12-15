@@ -47,11 +47,23 @@ If you choose to use a non-standard font, be sure that you have legal permission
 
 Colors can be specified in hexadecimal, RGB, RGBA, HSL, HSLA, and named formats.
 
+Capitalization can be controlled with the text-transform: property, while font-variant: can be used for special effects and text-decoration can be used to add lines above, below, or through text. letter-spacing: and word-spacing: control the spaces in text. text-shadow: RIGHT DOWN BLUR COLOR can be used to add text shadows. line-height: can be used to control spacing between lines of text, and text-align: controls the left, right, center, and justified positions. text-indent: will indent lines of text.
+
 ##Chapter 7
+
+Margin is the space between elements, and will always default to ONLY the highest margin. Padding is the space between content and border.
+
+border-radius: is used to round the corners on borders. box-shadow: is used to add a shadow to a box, with inset being added as a value to have the shadow appear inside the box. Also, box-sizing: border-box allows you to define the width while including the padding and border, but not the margin. overflow: can be used with the visible, scroll, auto, or hidden values to tell a browser what to do with content that is too large to fit inside of a box.
 
 ##Chapter 8
 
+In general it is preferable to use a background image rather than the img tag in html to add an image when possible. Tiling of background images can be used to control appearance, and multiple background images can be used at the same time, such as using 3 images with 1 tiling vertically to create a "scroll" that resizes to fit content. background-attachment: fixed can be used to ensure a background image does not move when the user scrolls down the page.
+
+The linear-gradient(START, COLOR1, COLOR2, etc.) value can be used to create gradients as a background when combined with the background-image: property. Lengths can be added to the colors to denote how far along the image the color should change. repeating-linear-gradient() can be use to create a repeating gradient. Radial gradients can also be created by replacing the "linear."
+
 ##Chapter 9
+
+
 
 ##Chapter 10
 
