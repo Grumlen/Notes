@@ -63,7 +63,7 @@ The linear-gradient(START, COLOR1, COLOR2, etc.) value can be used to create gra
 
 ##Chapter 9
 
-
+Always place :link, :visited, :hover, and :active in that order for a particular link. Use unordered lists for a navigation bar and then simply remove the bullets and padding/margin.
 
 ##Chapter 10
 
