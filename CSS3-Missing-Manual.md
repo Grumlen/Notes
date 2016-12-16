@@ -121,12 +121,34 @@ Background images can be used in a wrapper box to "fake" column backgrounds that
 
 Be careful about box sizing to prevent float drop, which is when a float seems to inexplicably drop below content that it should be next to.
 
-#Chapter 14
+##Chapter 14
 
-Responsive Web Design (RWD) is a series of html and css techniques that allow a site to automatically adjust its layout depending on the device being used to access it. To prevent phone zooming with RWD use &lt;meta name="viewport" content"width=device-width"&gt; in html OR @viewport {width=device-width;} in css.
+Responsive Web Design (RWD) is a series of html and css techniques that allow a site to automatically adjust its layout depending on the device being used to access it. To prevent phone zooming with RWD use &lt;meta name="viewport" content="width=device-width"&gt; in html OR @viewport {width=device-width;} in css.
 
 Good changes to make based on device are: # of columns, flexible widths, white space, font sizes, navigation menus, and background images. It can also help to cut some content from a page when being viewed on a small device.
 
 To make a media query in html, you use the media attribute inside a link element. The format is: media="(dimension:Xpx)" where X is a number and dimension can be min-width, width, or max-width. Use "and" to connect multiple media queries to create a width range. You can import an external CSS file using @import url(URL) (dimension:Xpx); or by using @media (dimension:Xpx) {} with all of the styling done in the declaration block.
 
 The width: and max-width: properties can be used to easily create automatically sizing boxes, but be sure to set box-sizing to border-box first.
+
+##Chapter 15
+
+Four positioning values: Absolute (removes from flow, position from top, left, bottom, and/or right), Relative (same as absolute except not removed from flow), Fixed (locks position on screen regardless of scrolling), and Static (default). When using anything other than static, it will default to the top-left corner unless you specify its position.
+
+Both absolute and relative position are always relative to the parent box. Use relative divs inside of absolute divs to aid in layout.
+
+To hide an element, use "display: none" or "visibility: hidden" or "opacity: 0". Combined with :hover you can use this to display captions when a user mouses over an image.
+
+Fixed positioning is useful if you want to keep certain elements always on the screen in the same place, such a a company logo or navigation bar, but be sure to position other elements with margins to prevent overlap.
+
+##Chapter 16
+
+Use comments to denote the purpose of declarations so that you can easily identify what you were doing at a later point. Name your classes and IDs clearly so it is obvious what they are, focusing on purpose rather than appearance or position as those may change later. Use multiple classes for to be able to apply styling selectively and avoid re-typing css code that appears already in your code.
+
+In the CSS file determine a standard way to organize your styles, either by related content or by purpose, and use comments to separate and name them. You can also create multiple CSS files each with a specific purpose to prevent a single CSS file from becoming huge and unwieldly. Then simply use a singe CSS file that imports each of the other CSS files.
+
+To help your site look the same in all browsers, it can be helpful to "zero-out" the default formatting. This can include removing padding and margins, applying consistent font styles, making everything display as a block by default, setting a consistent line height, customizing tables, removing borders from linked images, setting consistent list formatting, and removing quote marks from around quoted material.
+
+Use descendent selectors when appropriate instead of creating a class for every element. Use a div wrapper for major content areas with a class applied, then use descendent selectors to find elements within that div. Applying a class to the body tag can allow you to customize content by page easily using descendent selectors.
+
+You may also need to create specific css styles for Internet Explorer versions using: &lt;!--[if IE X]&gt; html code &lt;![endif]&gt; where X is the IE version, and removed if applying to all versions of IE.
