@@ -152,3 +152,17 @@ To help your site look the same in all browsers, it can be helpful to "zero-out"
 Use descendent selectors when appropriate instead of creating a class for every element. Use a div wrapper for major content areas with a class applied, then use descendent selectors to find elements within that div. Applying a class to the body tag can allow you to customize content by page easily using descendent selectors.
 
 You may also need to create specific css styles for Internet Explorer versions using: &lt;!--[if IE X]&gt; html code &lt;![endif]&gt; where X is the IE version, and removed if applying to all versions of IE.
+
+##Flex
+
+display: flex; - creates a flex container.
+
+flex-direction: column/row; - column for horizontal division, row for vertical division.
+
+flex-grow: # - defines a flex item and what ratio of unused space it should use.
+
+flex-shrink: # - defines a flex item and what ratio of excess space it should lose.
+
+flex-basis: 
+
+flex-order:
