@@ -29,3 +29,11 @@ Functions can be defined either using "var NAME = function(VALUE) {}" (created f
 Functions can be nested inside each other or made recursive (when a function calls upon itself in its own block). The stack is created as a result of nested functions, with every function being added to the top and the stack always being resolved top-down.
 
 Creating new functions should occur when they have a clearly defined purpose and the code within them will need to be used multiple times within the program. Functions can have a side effect and/or return a value. A side effect is when a function performs some action other than returning a value that is useful, such as printing specific text. A pure function is one that has no side effects and relies ONLY on local variables, such that it always produces the same results when given the same parameters.
+
+##Chapter 4
+
+An array allows a user to store a sequence of values using the notation "var NAME = [V0, V1, V2, V3, V4, ...]" A specific value of an array can be accessed using NAME[#]. NAME.push VX can be used to add the value VX to the end of array NAME. NAME.pop removes the last value from an array and returns it. NAME.join "TEXT" takes an array of strings and combines them into one string, inserting TEXT between each of them.
+
+Objects allow a user to store a list of properties (writtin as "NX:EX"), written as "var NAME = {N0:E0, N1:E1, N2:E2, ...}". An expression can be called by using "NAME.NX" to call up expression EX. "delete NAME.NX" can be used to remove a property from an object. "NX in NAME" can be used to determine if NX exists in NAME. Objects are only equal if they have been defined to be so; i.e. 2 objects separately defined with the exact same properties are not equal.
+
+indexof(VX) will return the first array index of VX. lastindexof(VX) will return the last array index of VX. slice(X,Y) will return an array starting at index X and ending just before index Y. If no Y value is given, it will continue to the end of the array. ARRAY1.concat(ARRAY2) will return an array with the ARRAY2 added to the end of ARRAY1.
