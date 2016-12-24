@@ -32,8 +32,16 @@ Creating new functions should occur when they have a clearly defined purpose and
 
 ##Chapter 4
 
-An array allows a user to store a sequence of values using the notation "var NAME = [V0, V1, V2, V3, V4, ...]" A specific value of an array can be accessed using NAME[#]. NAME.push VX can be used to add the value VX to the end of array NAME. NAME.pop removes the last value from an array and returns it. NAME.join "TEXT" takes an array of strings and combines them into one string, inserting TEXT between each of them.
+An array allows a user to store a sequence of values using the notation "var NAME = [V0, V1, V2, V3, V4, ...]" A specific value of an array can be accessed using NAME[#]. NAME.push(VX) can be used to add the value VX to the end of array NAME. NAME.pop removes the last value from an array and returns it. NAME.join "TEXT" takes an array of strings and combines them into one string, inserting TEXT between each of them.
 
-Objects allow a user to store a list of properties (writtin as "NX:EX"), written as "var NAME = {N0:E0, N1:E1, N2:E2, ...}". An expression can be called by using "NAME.NX" to call up expression EX. "delete NAME.NX" can be used to remove a property from an object. "NX in NAME" can be used to determine if NX exists in NAME. Objects are only equal if they have been defined to be so; i.e. 2 objects separately defined with the exact same properties are not equal.
+Objects allow a user to store a list of properties (written as "NX:EX"), written as "var NAME = {N0:E0, N1:E1, N2:E2, ...}". An expression can be called by using "NAME.NX" to call up expression EX. "delete NAME.NX" can be used to remove a property from an object. "NX in NAME" can be used to determine if NX exists in NAME. Objects are only equal if they have been defined to be so; i.e. 2 objects separately defined with the exact same properties are not equal.
 
 indexof(VX) will return the first array index of VX. lastindexof(VX) will return the last array index of VX. slice(X,Y) will return an array starting at index X and ending just before index Y. If no Y value is given, it will continue to the end of the array. ARRAY1.concat(ARRAY2) will return an array with the ARRAY2 added to the end of ARRAY1.
+
+##Chapter 5
+
+Functions should be created to abstract concepts so that the core program is more intuitive. While this may make a program slightly longer, it makes it less bug prone since you will be able to test each individual element before combining them into a whole. Also, each level of abstraction will cause the program to be less efficient, making it take longer to complete the task, but this inefficiency is often negligible when compared to human reaction speed.
+
+"ARRAY.forEach(function(X) {})" can be used to contain a for loop that would act on each element in an array, where each element will be named X inside the inner function. Using this notation it is possible to nest function, create functions inside others, and have functions edit other functions. The key to this is remembering that a function is just a value.
+
+JSON is an object array where every property name and value must be in quotations, allowing it to be turned into a string via .stringify or parsed back into an object using .parse.
