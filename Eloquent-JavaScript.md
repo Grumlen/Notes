@@ -77,3 +77,5 @@ Exception Handling is another way to debug software using the commands try, catc
 Do not use the try/catch system to blanket catch errors, but rather design it to indicate the specific error as best as possible (usually with a "throw e;" command).
 
 Assertions are functions designed to catch errors, usually by having a test condition that, if failed, returns a message.
+
+##Chapter 9
