@@ -45,3 +45,35 @@ Functions should be created to abstract concepts so that the core program is mor
 "ARRAY.forEach(function(X) {})" can be used to contain a for loop that would act on each element in an array, where each element will be named X inside the inner function. Using this notation it is possible to nest function, create functions inside others, and have functions edit other functions. The key to this is remembering that a function is just a value.
 
 JSON is an object array where every property name and value must be in quotations, allowing it to be turned into a string via .stringify or parsed back into an object using .parse.
+
+Other useful methods include .map (creates an array from an object using a set of criteria) and .filter (creates new object by removing properties that don't fit criteria).
+
+##Chapter 6
+
+Methods are properties that hold function values, allowing you to execute the given function easily on the object by using OBJECT.METHOD(). "this.NAME" can be used in a method to return the value of the property with the NAME.
+
+Prototypes are essentially base versions of objects. Any properties of a prototype will be passed onto objects with that prototype, though they can be specifically overwritten. You can call the prototype of an object using OBJECT.prototype. You can create a "child" of a prototype by using "var OBJECT = Object.create(PROTOTYPE)." Essentially a prototype provides default properties. When using Object.create, the new object will inherit all properties, including constructors, of the prototype.
+
+Constructors are functions that are called with the "new" keyword preceding them, and serve the purpose of creating new objects. Any instances of "this" inside the constructor will refer to the object being created.
+
+Prototypes can have enumerable and nonenumerable properties. Enumerable properties will show up in a for/in loop despite not existing in the object itself. By using "Object.defineProperty(Object.prototype, "NAME", {enumerable: true/false, value:VALUE})" you can set the enumeration of a prototype property. The "in" operator will still return nonenumerable properties, but you can use the .hasOwnProperty method see if the specific object has that property. To avoid prototype properties altogether, use "var OBJECT = Object.create(null)".
+
+Polymorphism allows you to to use the .toString method to define specific ways of transforming values into strings as long as they fit the format being used, such as creating a table out of an array of arrays.
+
+Getters and setters allow you to define a method that is only accessed when used. Getters trigger when you pass no argument in the method, while setters trigger when you define the argument.
+
+The "instanceOf" operator can be used to determine if an object was derived from a constructor in the format "new OBJECT() instanceOf CONSTRUCTOR". Essentially this will return true of the constructor is the prototype of the object.
+
+##Chapter 8
+
+JavaScript is in general terrible for debugging because it is not a strict language. This means that errors may be passed along as it tries to interpret them even though they are no longer meaningful. To avoid this you can start your program with "use strict";, which will cause it to require every value to be defined and help identify potential problem areas. It also causes the "this" binding to be undefined outside of methods (since by default "this" would not be referring to anything). It also has other effects.
+
+Testing for errors can be done using if statements, but can become cumbersome and repetitive. A well-placed console.log command can help identify errors, particularly in a function or a for loop. You can also use breakpoints in your browser's debugging software to pause the program, allowing you to inspect the various values in that snapshot.
+
+While programs for personal use can encounter errors that cause them to crash, this is generally not acceptable when others will be using your program. Thus it is prudent to include code that notifies the user of the error and either prompts to fix the mistake or simply shuts the program down.
+
+Exception Handling is another way to debug software using the commands try, catch, and throw along with the Error constructor. Essentially you place a throw command with the Error constructor in a place the program will only reach if an error occurs. Upon reaching the next try/catch command pair, if an error was thrown it will run the catch command. Otherwise it will run the try command. This allows you to test for errors in specific locations. The finally command can be used with try to ensure that a specific piece of code ALWAYS runs, regardless of an error being thrown or not.
+
+Do not use the try/catch system to blanket catch errors, but rather design it to indicate the specific error as best as possible (usually with a "throw e;" command).
+
+Assertions are functions designed to catch errors, usually by having a test condition that, if failed, returns a message.
