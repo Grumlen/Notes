@@ -102,9 +102,9 @@ Regular expressions are ways to check for patterns in strings, allowing you to i
 |/x?/|Zero or one occurrence|
 |/x{2,4}/|Between 2 and four occurrences|
 |/(abc)/|A group|
-|/\d/|Any digit character|
-|/\w/|An alphanumeric character|
-|/\s/|Any whitespace character|
+|/\d/|Any digit character, capitalize for negation|
+|/\w/|An alphanumeric character, capitalize for negation|
+|/\s/|Any whitespace character, capitalize for negation|
 |/./|Any character except newlines|
 |/\b/|A word boundary|
 |/^/|Start of input|
