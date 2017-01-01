@@ -78,4 +78,50 @@ Do not use the try/catch system to blanket catch errors, but rather design it to
 
 Assertions are functions designed to catch errors, usually by having a test condition that, if failed, returns a message.
 
-##Chapter 9
+##Chapter 9 Regular Expressions
+
+Regular expressions are ways to check for patterns in strings, allowing you to inspect, process, and filter them. A regular expression takes the form "/REGEXP/". There are many methods to be used with regular expressions, and many special characters to include for more detailed searching. At it's core, a regular expression is equivalent to any string that contains the contents of the regexp. For example, /th/ is equivalent to "thought" and "math" but not "sought" or "hat"
+
+|Method|Purpose|
+|---|---|
+|REGEXP.test("STRING")|Returns truth value of equivalency between regexp and string|
+|REGEXP.exec("STRING")|Returns the matching information and its index number; return null if no match|
+|"STRING".match(REGEXP)|Same as exec|
+|"STRING".replace(REGEXP or "STRING","STRING")|Searches the first string for all instances of the first argument and replaces them with the second argument|
+|"STRING".search(REGEXP)|Returns the first index of the expression, or -1 if not found|
+
+|Syntax|Description|
+|---|---|
+|/abc/|A sequence of characters|
+|/[abc]/|Any character from a set of characters|
+|/[^abc]/|Any character not from a set of characters|
+|/[0-9]/|Any character in a range of characters|
+|/x+/|One of more occurrences of the pattern x|
+|/x+?/|As above but not greedy|
+|/x*/|Zero of more occurrences of x|
+|/x?/|Zero or one occurrence|
+|/x{2,4}/|Between 2 and four occurrences|
+|/(abc)/|A group|
+|/\d/|Any digit character|
+|/\w/|An alphanumeric character|
+|/\s/|Any whitespace character|
+|/./|Any character except newlines|
+|/\b/|A word boundary|
+|/^/|Start of input|
+|/$/|End of input|
+
+##Chapter 10 Modules
+
+Modules are a special form of function used to prevent cluttering namespace in a program (i.e. avoiding reuse of variable names). The idea is to create functions that do not change in how they are called or the type of information they return even as you update them, meaning that any references to them in your programs will be able to continue using them (also known as having a "stable" interface).
+
+Other than simply using standard functions you can also wrap a function in parentheses, which causes JavaScript to treat it as an expression and thus does not require a name. This also means that the expression will be completely self-encased. Nothing from outside the expression will be able to access it, causing it to run wherever it is in the code with no effect on anything else. It would take the format of (function (){MODULE})();
+
+You can also create interfaces using modules. This allows you to have a general function with an interface system that allows you to alter how the module behaves. As a module is updates, additional interfaces can be added without affecting existing ones. Since this can become cumbersome in large modules, it is common to use an "exports" object and build the interface as its properties.
+
+To avoid confusion if 2 modules have the same name, you can create a separate file and use a "readFile" function to retrieve it. This allows you to avoid accidentally calling another module that may have the same name. However, "readFile" will only return a string. One way to read it as code is to use the "eval" operator, but this breaks the local scope of the module. Another way is to use the "Function" constructor, written as: "new Function("ARGUMENTS","CODE")". You can replace "CODE" with readFile(NAME) when using the readFile function. Because the module is called within a function, the file being read does not need to contain the function wrapping.
+
+The "require" function is part of node.js and causes the program to load the module within. Loading each module individually can be cumbersome for the code, however, especially if there are interdependencies. A modules that requires other modules and is run more than once will load its dependencies each times it is run. To get around this you can create a modules object with exports as a property.
+
+Because nothing else can happen while a script is running, loading several modules during a script can cause a website to freeze. To prevent this you can either use Browserify (which will load all dependencies into a single file) or AMD (which will load dependencies in the background before running a function) The AMD system uses "define" to load modules, with the module written as "define([],function(){CODE});" A "getModule" function can be written to to check if a module has already been loaded by storing loaded modules in a "cache" object and checking to see if a module already exists when being called.
+
+When creating modules try to keep their purpose as clear as possible. Making a catch-all module defeats the purpose as it makes it hard for others to understand your code. Also, try to keep modules simple and pure when possible. Modules should be specialized for the task at hand instead of trying to do everything themselves. Another suggestions is to make layered interfaces, where you design the detailed interface first and then create simpler versions of it for others to use containing the most commonly used parts of the interface.
