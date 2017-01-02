@@ -133,3 +133,14 @@ In addition to the ways we have already learned to include javascript in a page 
 In the early days a single browser would dominate the internet, but with the advent of Firefox, Chrome, and Safari there are now 4 major players that are much more concerned with cross-compatibility. Previously the dominant browser at the time would dictate web development to the detriment of other browsers.
 
 ##Chapter 13
+
+JavaScript is inserted into a html document by using the script tag. This can be used to either enclose the code or link to a separate file that contains your code.
+
+References to elements in the html document take the form of "document", i.e. document.body will access the body element. JavaScript refers to these elements as nodes. "document.documentElement" refers to the object that represents the html tag (the entire html document). Every node has a nodeType property, which is a numeric identifier: regular elements = 1 (document.ELEMENT_NODE), text nodes = 3 (document.TEXT_NODE), and comments = 8 (document.COMMENT_NODE). Essentially you can imagine elements in html as being objects in JavaScript, with child elements being sub-objects of the main object.
+
+The following properties are all fairly self-explanatory, returning the elements they describe: .childNodes, .lastChild, .firstChild, .previousSibling, and .nextSibling. If no such element exists, then the property returns null. The .nodeValue property refers to the contents of the element. An important method is .getElementsByTagName("TAG"), which creates an array containing all of the nodes of that element. Also .getElementById("ID") can be used to directly access an element with an id attribute. Finally .getElementsByClassName("CLASS") works as expected.
+
+Several methods allow you to edit the html, such as .removeChild(NODE) and .appendChild(NODE). The .insertBefore(NODE1,NODE2) method inserts NODE1 immediately before NODE2. The .replaceChild(NODE1,NODE2) method works the same except it replaces NODE2.
+Note that a given node can only exist once, so NODE1 will no longer exist in its original location. Others include .createTextNode(NODE) and .createElement(NODE). .textContent returns the contents of a text node.
+
+To add attributes to a node, use the .setAttribute("ATTRIBUTE"). The .getAttribute("ATTRIBUTE") method will read the value of the indicated attribute. Many attributes can be accessed directly via their name (body.style will access the style attribute of the body element); however, class is a reserved word in JavaScript so you instead use .className to access it.
