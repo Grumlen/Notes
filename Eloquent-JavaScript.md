@@ -125,3 +125,11 @@ The "require" function is part of node.js and causes the program to load the mod
 Because nothing else can happen while a script is running, loading several modules during a script can cause a website to freeze. To prevent this you can either use Browserify (which will load all dependencies into a single file) or AMD (which will load dependencies in the background before running a function) The AMD system uses "define" to load modules, with the module written as "define([],function(){CODE});" A "getModule" function can be written to to check if a module has already been loaded by storing loaded modules in a "cache" object and checking to see if a module already exists when being called.
 
 When creating modules try to keep their purpose as clear as possible. Making a catch-all module defeats the purpose as it makes it hard for others to understand your code. Also, try to keep modules simple and pure when possible. Modules should be specialized for the task at hand instead of trying to do everything themselves. Another suggestions is to make layered interfaces, where you design the detailed interface first and then create simpler versions of it for others to use containing the most commonly used parts of the interface.
+
+##Chapter 12
+
+In addition to the ways we have already learned to include javascript in a page using script, you can also use the attribute onclick="JS" in a button element. Web pages on the internet operate in a sandbox, meaning that they cannot manipulate  anything outside of the webpage they are embedded in. This results in an isolated programming environment.
+
+In the early days a single browser would dominate the internet, but with the advent of Firefox, Chrome, and Safari there are now 4 major players that are much more concerned with cross-compatibility. Previously the dominant browser at the time would dictate web development to the detriment of other browsers.
+
+##Chapter 13
