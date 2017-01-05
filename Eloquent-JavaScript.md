@@ -48,6 +48,8 @@ JSON is an object array where every property name and value must be in quotation
 
 Other useful methods include .map (creates an array from an object using a set of criteria) and .filter (creates new object by removing properties that don't fit criteria).
 
+Notable methods: ARRAY.forEach(function(X) {}) will iterate over the array, passing each value as an argument to the function and naming it X (or whatever else you have named the argument for the function). ARRAY.filter(function(X) {}) works like .forEach except that it creates a new array built on the returned truth value of the inner function. ARRAY.map(function(X) {}) also works like .forEach, but creates a new array built from the returns of the inner function. ARRAY.reduce(function(A,B) {}) performs an iterative function where B is the current element and A is the result of the previous iteration.
+
 ##Chapter 6
 
 Methods are properties that hold function values, allowing you to execute the given function easily on the object by using OBJECT.METHOD(). "this.NAME" can be used in a method to return the value of the property with the NAME.
@@ -62,7 +64,9 @@ Polymorphism allows you to to use the .toString method to define specific ways o
 
 Getters and setters allow you to define a method that is only accessed when used. Getters trigger when you pass no argument in the method, while setters trigger when you define the argument.
 
-The "instanceOf" operator can be used to determine if an object was derived from a constructor in the format "new OBJECT() instanceOf CONSTRUCTOR". Essentially this will return true of the constructor is the prototype of the object.
+The "instanceOf" operator can be used to determine if an object was derived from a constructor in the format "new OBJECT() instanceOf CONSTRUCTOR". Essentially this will return true if the constructor is the prototype of the object.
+
+Call and apply are methods on a method that allows you to target a specific object instead of the default for the 1st method. Both take the first argument as the target. Call takes other arguments for the method as comma separated, while apply takes other arguments as an array. Bind is similar except that it returns a new function with "this" ALWAYS changed to the target.
 
 ##Chapter 8
 
@@ -126,6 +130,8 @@ Because nothing else can happen while a script is running, loading several modul
 
 When creating modules try to keep their purpose as clear as possible. Making a catch-all module defeats the purpose as it makes it hard for others to understand your code. Also, try to keep modules simple and pure when possible. Modules should be specialized for the task at hand instead of trying to do everything themselves. Another suggestions is to make layered interfaces, where you design the detailed interface first and then create simpler versions of it for others to use containing the most commonly used parts of the interface.
 
+For more information see Immediate Invoke Function Expression.
+
 ##Chapter 12
 
 In addition to the ways we have already learned to include javascript in a page using script, you can also use the attribute onclick="JS" in a button element. Web pages on the internet operate in a sandbox, meaning that they cannot manipulate  anything outside of the webpage they are embedded in. This results in an isolated programming environment.
@@ -144,3 +150,41 @@ Several methods allow you to edit the html, such as .removeChild(NODE) and .appe
 Note that a given node can only exist once, so NODE1 will no longer exist in its original location. Others include .createTextNode(NODE) and .createElement(NODE). .textContent returns the contents of a text node.
 
 To add attributes to a node, use the .setAttribute("ATTRIBUTE"). The .getAttribute("ATTRIBUTE") method will read the value of the indicated attribute. Many attributes can be accessed directly via their name (body.style will access the style attribute of the body element); however, class is a reserved word in JavaScript so you instead use .className to access it.
+
+##Chapter 14
+
+Handlers allow JavaScript to react to button presses instead of having to constantly poll the system to detect a button press. The .addEventListener("EVENT",FUNCTION) is a method attached to a node that executes the FUNCTION when the EVENT is triggered. The method .removeEventListener("EVENT",FUNCTION) is used to remove a handler previously added.
+
+Event objects are objects that contain all of the details of the event that occurred. For example the EVENT.which property gives information on the event that occurred, while the EVENT.target property gives the node where the event occurred.
+
+Propagation determines the order in which event handlers occur, notably that the handler most specific to the node always occurs first, with parent handlers occurring in order as they are further removed from the original node. To stop the propagation, the method EVENT.stopPropagation() is used within the handler method. There are also many default actions that take place on a page, such as right-click bringing up the context menu. These always occur after handlers specified in JavaScript, and can be stopped using the EVENT.preventDefault() method.
+
+For keyboard input, the "keydown" and "keyup" events have the expected function, but note that "keydown" actions will repeat so be careful. When trying to register text that a user is typing, instead of using keydown use "keypress". It functions like keydown but only for keys that produce character input. You can then use String.fromCharCode(EVENT.charCode) to retrieve the text as a string.
+
+"mousedown" triggers when you press a mouse key while the cursor is over the element, "mouseup" triggers when you release the mouse button while the cursor is over an object, and "click" requires both mousedown AND mouseup on the same node before triggering. Finally "dblclick" requires 2 clicks in rapid succession. All of the mouse events log their location, accessable through the EVENT.pageX and EVENT.pageY properties which return the number of pixels offset from the top-left corner of the document. EVENT.clientX and EVENT.clientY are similar but instead relative to the part of the document currently scrolled into view. "mousemove" can be used to keep track of the movement of the cursor, and references are usually contained within a reference to "mousedown" for drag-and-drop functionality. "mouseover" and "mouseout" events trigger when a cursor enters of leaves a node irrespective of actually pressing a button, but be careful of propagation.
+
+The "scroll" event triggers when a user scrolls an element, which is useful for stopping animations that may no longer be visible. "focus" fires when a user focuses on an element, such as a form, and "blur" fires when the element loses focus.
+
+The property EVENT.keyCode returns a numeric identifier for the key actually pressed. For most keys number is the unicode for the number or uppercase letter corresponding to the key, which can also be found using "A".charCodeAt(0). For the shift, ctrl, alt and meta (command on Mac) keys, use EVENT.shiftKey, EVENT.ctrlKey, EVENT.altKey, and EVENT.metaKey respectively.
+
+The var TIMEOUT setTimeout(function(){},TIME); function can be used to execute code after a specified number of milliseconds. clearTimeout(TIMEOUT) can be used to cancel a timeout you have set, and cancelAnimationFrame works the same but for cancelling a requestAnimationFrame function.
+
+|Event Name|Trigger|
+|---|---|
+|"keydown"|Pressing down on a key|
+|"keyup"|releasing a key|
+|"keypress"|Like keydown, but useful to log multiple keystrokes|
+|"mousedown"|Pressing a mouse button with the cursor over the node|
+|"mouseup"|Releasing a mouse button with the cursor over the node|
+|"click"|Pressing and releasing a mouse button while the cursor is still over the node|
+|"dblclick"|2 clicks in rapid succession|
+|"mousemove"|Registers movement of the mouse|
+|"mouseover"|When cursor moves into the space of a node|
+|"mouseout"|When cursor leaves the space of a node|
+|"scroll"|Scrolling an element|
+|"focus"|When focus is brought to a node such as a form|
+|"blur"|When focus leaves a node|
+|"load"|When a page finishes loading|
+|"beforeunload"|When a page is closed of navigated away from|
+
+##Chapter 17
