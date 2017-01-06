@@ -188,3 +188,40 @@ The var TIMEOUT setTimeout(function(){},TIME); function can be used to execute c
 |"beforeunload"|When a page is closed of navigated away from|
 
 ##Chapter 17
+
+HTTP (HyperText Transfer Protocol) is used to send and receive information through a network. A request looks like this:
+GET /17_http.html HTTP/1.1      | GET contains the path to the file being requests, HTTP contains the http version
+Host: eloquentjavascript.net    | The domain being accessed
+User-Agent: Your browser's name | Your browser
+
+In return the server will send the following headers:
+HTTP/1.1 200 OK                 | Version return and 3-number status code, 400+ means an error of some sort
+Content-Length: 65585           | Size of the file in bytes
+Content-Type: text/html         | Type of file
+Last-Modified: DATE             | Other information
+                                |
+BODY                            | The actual file
+
+A server can send more or fewer headers depending on user request and server compliance.
+
+HTML forms that use the get attribute will send a get request with the contents of the form sent following the path and separated by a ?. It may also require escaping characters using unicode references. The encodeURIComponent("STRING") and decodeURIComponent("STRING") can be used to switch to and from this encoding. A post method will, instead of sending the contents attached to the path, place it in the body of the message.
+
+The var REQUEST = XMLHttpRequest() constructor is used to establish a request. Afterwards the REQUEST.open("TYPE", "PATH", TF) is used to tailor the request, with TYPE being the type of request (get, post, etc.), PATH being the path to the file requested, and TF being true for asynchronous requests and false for synchronous requests. This is then followed by REQUEST.send(BODY) will attach the body to the request (typically null) and actually send the request. Finally REQUEST.responseText will return the body of the file requested.
+
+Asynchronous requests allow a program to continue after a request is sent without having to wait for the server to respond. While this can improve the loading speed of a javascript program, it can also cause problems if it encounters code dependent on the request. For this reason you should wrap any code dependent on the request in a "load" event. Error handling on asynchronous requests is tricky since the callback function that will throw the error may not run until the code has already passed the try/catch block. Instead placing the callback function in a "load" event can allow detection of a failure to load the requested file.
+
+For security reasons, the vast majority of websites will not allow http requests to other domains.
+
+A common convention is to abstract XMLHttpRequest into another function so that you do now have to constantly rewrite the same code. Simply create a function that takes the url and the desired callback function and runs it through the XML request code.
+
+A promise is a constructor that provides an interface for error detection in asynchronous code. It is written as "return new Promise(function(succeed,fail){})" with succeed and fail being defined within the constructor. Succeed is used to return the desired result, while fail is used to return a failed result. It essentially acts as an internal wrapper to a function, so the normal code for the function will be contained within the promise. This then allows the primary function to have a few additional methods: "then(function(){},function(){})" will execute the first function if the promise succeeds or the second function if is fails.
+
+##Chapter 18
+
+Form fields typically appear inside a form tag in html, but can also appear anywhere in a web page. While they can only be submitted if inside a form element, JavaScript is capable of interacting with them without actual submission. Each input element will have a value property that contains the information the user has entered. When wrapped in a form element, each input will also have a form property that points to the form element itself. The name attribute of an input can be used as a property on the form element to access the input element.
+
+It is possible to force focus to or away from a form field by using the .focus() and .blur() methods. This can also be done using the "autofocus" attribute in html. The "tabindex=X" attribute can be used to control the order in which a user will cycle through form fields when using the tab key. The "change" event will fire in a text field when it loses focus after the content has been changed. For immediate reaction the "input" event will respond for every change as it occurs.
+
+With the radio input type, a single name attribute is used for multiple radio elements to link them together. The .getElementsByName("NAME") is often used to return an array of all radio elements with the specified name. The select tag is similar to radio, but its appearance is determined by the browser rather than the developer. It can have a functionality similar to checkboxes if the multiple attribute is applied.
+
+Any information in javascript is cleared when the page is reloaded. To store information past this point you can use localStorage.setItem("NAME","VALUE") to create a property for the localStorage object. This will persist until you use localStorage.removeItem("NAME") to remove a property. localStorage is unique to each domain.
